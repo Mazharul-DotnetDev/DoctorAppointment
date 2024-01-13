@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorAppointment", "DoctorAppointment.csproj", "{C6C929C2-FEB9-48E9-8AE5-0E536ECF54DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{384A65D7-95FF-413A-8F2D-12ABF7F8DA9E}"
+	ProjectSection(SolutionItems) = preProject
+		..\Problem\Problem.txt = ..\Problem\Problem.txt
+		..\RawQuery.txt = ..\RawQuery.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6C929C2-FEB9-48E9-8AE5-0E536ECF54DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C929C2-FEB9-48E9-8AE5-0E536ECF54DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C929C2-FEB9-48E9-8AE5-0E536ECF54DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C929C2-FEB9-48E9-8AE5-0E536ECF54DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21A040FD-D17B-4A6B-BD62-293ACF6BC014}
+	EndGlobalSection
+EndGlobal
