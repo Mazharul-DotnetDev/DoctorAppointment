@@ -1,22 +1,22 @@
 {
-    "DoctorName": "ditc employee 1",
-    "Specialization": "ctg",
-    "ContactNumber": "admin@ditc.com",
-    "ConsultationFee":84000,
+    "DoctorName": "Dr. Asad Khan",
+    "Specialization": "Medicine",
+    "ContactNumber": "423532535",
+    "ConsultationFee":4000,
      "IsAvailable":true,
-    "DepartmentId":2,
+    "DepartmentId":1,
     
    
     "Appointments":[
         {
-            "PatientName":"Manager",
-            "PatientContactNumber":"Google",
+            "PatientName":"Sakib Khan",
+            "PatientContactNumber":"342512545",
             "AppointmentScheduleTime":"2021-12-11",
             "AppointmentAppliedTime":"2023-12-11"
         },
         {
-            "PatientName":"asst. Manager",
-            "PatientContactNumber":"Intel",
+            "PatientName":"Mashrafi",
+            "PatientContactNumber":"4564564645",
             "AppointmentScheduleTime":"2019-12-11",
             "AppointmentAppliedTime":"2021-12-11"
         }
@@ -24,3 +24,7 @@
 
 
 }
+
+
+
+

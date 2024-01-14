@@ -1,0 +1,9 @@
+System.IdentityModel.Tokens.Jwt
+
+Microsoft.Owin.Security.Jwt
+
+Microsoft.AspNet.WebApi.Owin
+
+Microsoft.Owin.Host.SystemWeb
+
+EntityFramework
