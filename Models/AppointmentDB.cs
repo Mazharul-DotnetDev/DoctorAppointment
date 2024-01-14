@@ -16,7 +16,7 @@ namespace DoctorAppointment.Models
         public DbSet<ConsumerInfo> dbsConsumerInfo { get; set; }
 
 
-        public AppointmentDB () : base("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=AppointmentDb;Integrated Security=True;")
+        public AppointmentDB () : base("dbConn")
         {
 
 

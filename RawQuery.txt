@@ -1,0 +1,26 @@
+{
+    "DoctorName": "ditc employee 1",
+    "Specialization": "ctg",
+    "ContactNumber": "admin@ditc.com",
+    "ConsultationFee":84000,
+     "IsAvailable":true,
+    "DepartmentId":2,
+    
+   
+    "Appointments":[
+        {
+            "PatientName":"Manager",
+            "PatientContactNumber":"Google",
+            "AppointmentScheduleTime":"2021-12-11",
+            "AppointmentAppliedTime":"2023-12-11"
+        },
+        {
+            "PatientName":"asst. Manager",
+            "PatientContactNumber":"Intel",
+            "AppointmentScheduleTime":"2019-12-11",
+            "AppointmentAppliedTime":"2021-12-11"
+        }
+    ]
+
+
+}

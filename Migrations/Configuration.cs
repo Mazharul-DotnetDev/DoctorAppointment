@@ -10,8 +10,11 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "DoctorAppointment.Models.AppointmentDB";
+
+
+            //AutomaticMigrationDataLossAllowed = true;
+
+            //ContextKey = "DoctorAppointment.Models.AppointmentDB";
         }
 
         protected override void Seed(DoctorAppointment.Models.AppointmentDB context)
