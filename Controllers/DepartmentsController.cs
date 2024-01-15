@@ -64,6 +64,8 @@ namespace DoctorAppointment.Controllers
 
             try
             {
+                
+                department.LastUpdated = DateTime.UtcNow;  // Set LastUpdated after saving
                 await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

@@ -12,8 +12,8 @@
                 c => new
                     {
                         AppointmentId = c.Int(nullable: false, identity: true),
-                        PatientName = c.String(maxLength: 100),
-                        PatientContactNumber = c.String(),
+                        PatientName = c.String(nullable: false, maxLength: 100),
+                        PatientContactNumber = c.String(nullable: false),
                         AppointmentScheduleTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         AppointmentAppliedTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         DoctorId = c.Int(nullable: false),
@@ -29,6 +29,9 @@
                         ConsumerName = c.String(nullable: false, maxLength: 50),
                         Password = c.String(nullable: false, maxLength: 50),
                         Role = c.String(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        LastUpdated = c.DateTime(),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ConsumerName);
             
@@ -38,6 +41,9 @@
                     {
                         DepartmentId = c.Int(nullable: false, identity: true),
                         DepartmentName = c.String(nullable: false, maxLength: 50),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        LastUpdated = c.DateTime(),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.DepartmentId);
             
@@ -48,9 +54,13 @@
                         DoctorId = c.Int(nullable: false, identity: true),
                         DoctorName = c.String(nullable: false, maxLength: 100),
                         Specialization = c.String(maxLength: 250),
-                        ContactNumber = c.String(maxLength: 20),
+                        ContactNumber = c.String(),
                         ConsultationFee = c.Decimal(nullable: false, precision: 18, scale: 2),
                         IsAvailable = c.Boolean(nullable: false),
+                        ImageUrl = c.String(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        LastUpdated = c.DateTime(),
+                        IsDeleted = c.Boolean(nullable: false),
                         DepartmentId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DoctorId)

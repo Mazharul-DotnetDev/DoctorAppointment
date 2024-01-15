@@ -10,29 +10,43 @@ namespace DoctorAppointment.Models
 {
     public class Appointment
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AppointmentId { get; set; }
 
+        
+      
         [MaxLength(100)]
+        [Display(Name = "Patient Name")]
+        [Required(ErrorMessage = "Patient name is required.")]
+        [RegularExpression(@"^[a-zA-Z]+(?:\s[a-zA-Z]+)*$", ErrorMessage = "Patient name should only contain letters.")]
         public string PatientName { get; set; }
 
+
+        [Required]
+        [Phone]
+        [Display(Name = "Patient Contact Number")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Contact number should be 10 digits.")]
         public string PatientContactNumber { get; set; }
 
 
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
-        [DisplayName("Appointment Schedule Time")]
+        //[DisplayName("Appointment Schedule Time")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-
         public DateTime AppointmentScheduleTime { get; set; }
+
+
+
 
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
-        [DisplayName("Appointment Applied Time")]
+        //[DisplayName("Appointment Applied Time")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AppointmentAppliedTime { get; set; }
 
-       
+
+        [Range(1, int.MaxValue)]
         public int DoctorId { get; set; }
 
         

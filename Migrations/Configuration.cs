@@ -11,7 +11,6 @@
         {
             AutomaticMigrationsEnabled = true;
 
-
             //AutomaticMigrationDataLossAllowed = true;
 
             //ContextKey = "DoctorAppointment.Models.AppointmentDB";
@@ -19,10 +18,10 @@
 
         protected override void Seed(DoctorAppointment.Models.AppointmentDB context)
         {
-            context.dbsConsumerInfo.AddOrUpdate(new Models.ConsumerInfo() { ConsumerName = "Doctor", Password = "abc123", Role = "Admin" });
+            context.dbsConsumerInfo.AddOrUpdate(new Models.ConsumerInfo() { ConsumerName = "ABCDEF", Password = "Ab@!1234", Role = "Doctor" });
 
 
-            context.dbsConsumerInfo.AddOrUpdate(new Models.ConsumerInfo() { ConsumerName = "Patient", Password = "123456", Role = "User" });
+            context.dbsConsumerInfo.AddOrUpdate(new Models.ConsumerInfo() { ConsumerName = "GHIJKL", Password = "1234!@Ab", Role = "Administrator" });
         }
     }
 }

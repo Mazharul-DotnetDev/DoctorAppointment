@@ -168,16 +168,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202401151735056_hhh.cs" />
-    <Compile Include="Migrations\202401151735056_hhh.designer.cs">
-      <DependentUpon>202401151735056_hhh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Startup.cs" />
-    <Compile Include="Migrations\202401132035136_First.cs" />
-    <Compile Include="Migrations\202401132035136_First.designer.cs">
-      <DependentUpon>202401132035136_First.cs</DependentUpon>
+    <Compile Include="Migrations\202401151914118_First.cs" />
+    <Compile Include="Migrations\202401151914118_First.designer.cs">
+      <DependentUpon>202401151914118_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\AppointmentDB.cs" />
     <Compile Include="Models\ConsumerInfo.cs" />
@@ -199,11 +195,8 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202401132035136_First.resx">
-      <DependentUpon>202401132035136_First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401151735056_hhh.resx">
-      <DependentUpon>202401151735056_hhh.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202401151914118_First.resx">
+      <DependentUpon>202401151914118_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
