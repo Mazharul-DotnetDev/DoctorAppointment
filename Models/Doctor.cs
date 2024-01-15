@@ -30,7 +30,15 @@ namespace DoctorAppointment.Models
 
         public bool IsAvailable { get; set; }
 
-       
+        public string ImageUrl { get; set; }
+
+        [NotMapped]
+        [DataType(DataType.Upload)]
+        [ScaffoldColumn(true)]
+
+        public HttpPostedFileBase ImageUpload { get; set; }
+
+
         public int DepartmentId { get; set; }
 
         

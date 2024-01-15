@@ -2,29 +2,22 @@
     "DoctorName": "Dr. Asad Khan",
     "Specialization": "Medicine",
     "ContactNumber": "423532535",
-    "ConsultationFee":4000,
-     "IsAvailable":true,
-    "DepartmentId":1,
-    
-   
-    "Appointments":[
+    "ConsultationFee": 4000,
+    "IsAvailable": true,
+    "ImageUrl": "/Images/30f01b27-6f58-45c4-a4e7-20900b0655e8.png",
+    "DepartmentId": 1,
+    "Appointments": [
         {
-            "PatientName":"Sakib Khan",
-            "PatientContactNumber":"342512545",
-            "AppointmentScheduleTime":"2021-12-11",
-            "AppointmentAppliedTime":"2023-12-11"
+            "PatientName": "Sakib Khan",
+            "PatientContactNumber": "342512545",
+            "AppointmentScheduleTime": "2021-12-11",
+            "AppointmentAppliedTime": "2023-12-11"
         },
         {
-            "PatientName":"Mashrafi",
-            "PatientContactNumber":"4564564645",
-            "AppointmentScheduleTime":"2019-12-11",
-            "AppointmentAppliedTime":"2021-12-11"
+            "PatientName": "Mashrafi",
+            "PatientContactNumber": "4564564645",
+            "AppointmentScheduleTime": "2019-12-11",
+            "AppointmentAppliedTime": "2021-12-11"
         }
     ]
-
-
 }
-
-
-
-

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DoctorAppointment.Models;
+using System.IO;
+using System.Web;
+
 
 namespace DoctorAppointment.Controllers
 {
@@ -19,14 +22,38 @@ namespace DoctorAppointment.Controllers
     {
         private AppointmentDB db = new AppointmentDB();
 
+
+
+
+        [ResponseType(typeof(string))]
+        [HttpPost]
+        [Route("~/Doctors/UploadImage")]
+        public IHttpActionResult UploadImage()
+        {
+
+            var upload = HttpContext.Current.Request.Files.Count > 0 ?
+        HttpContext.Current.Request.Files[0] : null;
+
+
+            if (upload is null) return BadRequest();
+
+
+            string ImageUrl = "/Images/" + Guid.NewGuid() + Path.GetExtension(upload.FileName);
+
+
+            upload.SaveAs(HttpContext.Current.Server.MapPath(ImageUrl));
+
+            return Ok(ImageUrl);
+
+        }
+
+
+
         // GET: api/Doctors
         public IQueryable<Doctor> GetdbsDoctor()
         {
             return db.dbsDoctor.Include(e => e.Appointments).Include(e => e.Department); 
         }
-
-
-
 
 
 
@@ -45,10 +72,6 @@ namespace DoctorAppointment.Controllers
 
             return Ok(doctor);
         }
-
-
-
-
 
 
         // PUT: api/Doctors/5
@@ -83,7 +106,7 @@ namespace DoctorAppointment.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok("Information has been modified successfully");
         }
 
 

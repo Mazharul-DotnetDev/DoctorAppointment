@@ -168,6 +168,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401151735056_hhh.cs" />
+    <Compile Include="Migrations\202401151735056_hhh.designer.cs">
+      <DependentUpon>202401151735056_hhh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Migrations\202401132035136_First.cs" />
     <Compile Include="Migrations\202401132035136_First.designer.cs">
@@ -192,10 +196,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202401132035136_First.resx">
       <DependentUpon>202401132035136_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401151735056_hhh.resx">
+      <DependentUpon>202401151735056_hhh.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
