@@ -15,51 +15,92 @@ namespace DoctorAppointment.Controllers
 {
     public class CredentialController : ApiController
     {
+        private readonly ITokenService _tokenService;
+        private readonly IConsumerService _consumerService;
+
+
+        public CredentialController()
+        {
+            
+        }
+
+
+        public CredentialController(ITokenService tokenService, IConsumerService consumerService)
+        {
+            _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
+            _consumerService = consumerService ?? throw new ArgumentNullException(nameof(consumerService));
+        }
+
         [Route("~/access")]
         [HttpPost]
-
-        public IHttpActionResult JWT_Token (ConsumerInfo consumer)
+        public IHttpActionResult JWT_Token(ConsumerInfo consumer)
         {
-
-            ConsumerInfo loginConsumer;
-
-            using (AppointmentDB db = new AppointmentDB())
+            try
             {
-                loginConsumer = db.dbsConsumerInfo.SingleOrDefault(c => c.ConsumerName == consumer.ConsumerName && c.Password == consumer.Password);
+                var loginConsumer = _consumerService.GetConsumerInfo(consumer.ConsumerName, consumer.Password);
+
+                if (loginConsumer is null)
+                {
+                    return Content(HttpStatusCode.BadRequest, "Invalid credentials");
+                }
+
+                var jwt = _tokenService.GenerateToken(loginConsumer);
+                return Ok(jwt);
             }
-
-
-            if (loginConsumer is null)
+            catch (Exception ex)
             {
-                return BadRequest("Invalid credentials");
+                // Log the exception
+                return InternalServerError(ex);
             }
+        }
+    }
 
+    public interface ITokenService
+    {
+        string GenerateToken(ConsumerInfo consumerInfo);
+    }
 
+    public class TokenService : ITokenService
+    {
+        public string GenerateToken(ConsumerInfo consumerInfo)
+        {
             var key = ConfigurationManager.AppSettings["JwtKey"];
             var issuer = ConfigurationManager.AppSettings["JwtIssuer"];
             var audience = ConfigurationManager.AppSettings["JwtAudience"];
 
-
             var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
             var credential = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var consumerClaims = new List<Claim>();
-
-            consumerClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-
-            consumerClaims.Add(new Claim(ClaimTypes.Name, loginConsumer.ConsumerName));
-
-            consumerClaims.Add(new Claim(ClaimTypes.Role, loginConsumer.Role.ToString()));
-
+            var consumerClaims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Name, consumerInfo.ConsumerName),
+                new Claim(ClaimTypes.Role, consumerInfo.Role.ToString())
+            };
 
             var token = new JwtSecurityToken(issuer, audience, consumerClaims, expires: DateTime.UtcNow.AddMinutes(30), signingCredentials: credential);
 
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+    }
 
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+    public interface IConsumerService
+    {
+        ConsumerInfo GetConsumerInfo(string consumerName, string password);
+    }
 
-            return Ok(jwt);
+    public class ConsumerService : IConsumerService
+    {
+        private readonly AppointmentDB _db;
+
+        public ConsumerService(AppointmentDB db)
+        {
+            _db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-
+        public ConsumerInfo GetConsumerInfo(string consumerName, string password)
+        {
+            return _db.dbsConsumerInfo.SingleOrDefault(c => c.ConsumerName == consumerName && c.Password == password);
+        }
     }
 }

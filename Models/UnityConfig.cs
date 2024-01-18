@@ -1,34 +1,26 @@
-using DoctorAppointment.Controllers;
+﻿using DoctorAppointment.Controllers;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Routing;
-using Unity.AspNet.WebApi;
 using Unity;
+using Unity.AspNet.WebApi;
 
-namespace DoctorAppointment
+namespace DoctorAppointment.Models
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public static class UnityConfig
     {
-        protected void Application_Start()
+        public static void RegisterComponents()
         {
-
-            //GlobalConfiguration.Configure(WebApiConfig.Register);
-
-            // Initialize Unity container
             var container = new UnityContainer();
 
             // Register your services and controllers here
             container.RegisterType<ITokenService, TokenService>();
             container.RegisterType<IConsumerService, ConsumerService>();
 
-            // Set the Unity dependency resolver
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
-
-
-            GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }

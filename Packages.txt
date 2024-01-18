@@ -7,3 +7,12 @@ Microsoft.AspNet.WebApi.Owin
 Microsoft.Owin.Host.SystemWeb
 
 EntityFramework
+
+Unity.AspNet.WebApi
+
+
+
+
+Update-Package:
+
+Microsoft.Web.Infrastructure
