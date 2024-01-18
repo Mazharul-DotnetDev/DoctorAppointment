@@ -23,6 +23,115 @@ namespace DoctorAppointment.Controllers
         private AppointmentDB db = new AppointmentDB();
 
 
+        // GET: api/Doctors/UploadImage/5
+        [ResponseType(typeof(string))]
+        [HttpGet]
+        [Route("~/Doctors/UploadImage/{id}")]
+        public IHttpActionResult GetUploadedImage(int id)
+        {
+            Doctor doctor = db.dbsDoctor.Find(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            if (string.IsNullOrEmpty(doctor.ImageUrl))
+            {
+                return NotFound();
+            }
+
+            return Ok(doctor.ImageUrl);
+        }
+
+
+        // PUT: api/Doctors/UploadImage/5
+        [ResponseType(typeof(void))]
+        [HttpPut]
+        [Route("~/Doctors/UploadImage/{id}")]
+        public async Task<IHttpActionResult> PutUploadImage(int id)
+        {
+            var upload = HttpContext.Current.Request.Files.Count > 0 ?
+                HttpContext.Current.Request.Files[0] : null;
+
+            if (upload is null)
+            {
+                return BadRequest();
+            }
+
+            Doctor doctor = await db.dbsDoctor.FindAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            string imageUrl = "/Images/" + Guid.NewGuid() + Path.GetExtension(upload.FileName);
+            upload.SaveAs(HttpContext.Current.Server.MapPath(imageUrl));
+
+            // Update the doctor's ImageUrl property
+            doctor.ImageUrl = imageUrl;
+            db.Entry(doctor).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DoctorExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok("Image updated successfully");
+        }
+
+
+
+        // DELETE: api/Doctors/UploadImage/5
+        [ResponseType(typeof(void))]
+        [HttpDelete]
+        [Route("~/Doctors/UploadImage/{id}")]
+        public async Task<IHttpActionResult> DeleteUploadedImage(int id)
+        {
+            Doctor doctor = await db.dbsDoctor.FindAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            string imagePath = HttpContext.Current.Server.MapPath(doctor.ImageUrl);
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+
+            doctor.ImageUrl = null;
+            db.Entry(doctor).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DoctorExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok("Image deleted successfully");
+        }
+
 
 
         [ResponseType(typeof(string))]
