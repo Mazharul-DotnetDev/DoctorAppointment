@@ -1,9 +1,9 @@
+EntityFramework
+
 System.IdentityModel.Tokens.Jwt
-
-Microsoft.Owin.Security.Jwt
-
-Microsoft.AspNet.WebApi.Owin
 
 Microsoft.Owin.Host.SystemWeb
 
-EntityFramework
+Microsoft.AspNet.WebApi.Owin
+
+Microsoft.Owin.Security.Jwt
