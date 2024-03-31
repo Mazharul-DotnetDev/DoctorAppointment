@@ -6,21 +6,21 @@ This web application is a doctor appointment system built using ASP.NET Web API 
 
 ## Key Features:
 
-User Management: Users can register and log in to the system to schedule appointments with ease.
-Doctor Management: Doctors have the ability to manage their profiles, schedules, and appointments effectively.
-Department Management: Create and manage departments to categorize doctors and their specialties for a streamlined user experience.
-CRUD Operations: Doctors and departments can be created, edited, viewed, and deleted, ensuring flexibility and data maintenance.
-Master-Details: Doctors are associated with their corresponding departments, offering a hierarchical view of the system for better organization.
-Image Upload: Doctors can upload profile pictures to personalize their online presence.
-JWT Authentication: Users are authenticated using JWT tokens, safeguarding secure access to the system.
+A. User Management: Users can register and log in to the system to schedule appointments with ease.
+B. Doctor Management: Doctors have the ability to manage their profiles, schedules, and appointments effectively.
+C. Department Management: Create and manage departments to categorize doctors and their specialties for a streamlined user experience.
+D. CRUD Operations: Doctors and departments can be created, edited, viewed, and deleted, ensuring flexibility and data maintenance.
+E. Master-Details: Doctors are associated with their corresponding departments, offering a hierarchical view of the system for better organization.
+F. Image Upload: Doctors can upload profile pictures to personalize their online presence.
+G. JWT Authentication: Users are authenticated using JWT tokens, safeguarding secure access to the system.
 ## Technologies:
 
-ASP.NET Web API
-Entity Framework
-.NET Framework 4.8
-JSON Web Token (JWT)
-OWIN (Open Web Interface for .NET)
-Visual Studio 2022
+-- ASP.NET Web API
+-- Entity Framework
+-- .NET Framework 4.8
+-- JSON Web Token (JWT)
+-- OWIN (Open Web Interface for .NET)
+-- Visual Studio 2022
 
 ## Getting Started (Before running the application):
 
@@ -58,3 +58,5 @@ Refer to the project code for detailed information on specific features and func
 ## Feedback and Contributions:
 
 You are welcome to give your valueable feedback and contributions to improve this project. Feel free to open issues or pull requests on the GitHub repository.
+
+
